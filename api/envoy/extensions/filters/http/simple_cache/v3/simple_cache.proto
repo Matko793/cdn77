@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package envoy.extensions.filters.http.simple_cache.v3;
+
+import "udpa/annotations/status.proto";
+import "validate/validate.proto";
+
+option java_package = "io.envoyproxy.envoy.extensions.filters.http.simple_cache.v3";
+option java_outer_classname = "SimpleCacheProto";
+option java_multiple_files = true;
+option go_package = "github.com/envoyproxy/go-control-plane/envoy/extensions/filters/http/simple_cache/v3;simple_cachev3";
+option (udpa.annotations.file_status).package_version_status = ACTIVE;
+
+// [#protodoc-title: Simple Cache]
+// Simple ring-buffer HTTP response cache with request coalescing.
+// [#extension: envoy.filters.http.simple_cache]
+
+message SimpleCache {
+  // Number of entries per ring buffer per cache key.
+  // Each unique (Host, path) pair gets its own ring buffer of this size.
+  // When the ring buffer is full the oldest entry is overwritten.
+  // Defaults to 1 if not set.
+  uint32 ring_buffer_size = 1 [(validate.rules).uint32 = {gt: 0}];
+}

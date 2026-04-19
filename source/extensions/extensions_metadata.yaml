@@ -717,6 +717,13 @@ envoy.filters.http.set_metadata:
   status: stable
   type_urls:
   - envoy.extensions.filters.http.set_metadata.v3.Config
+envoy.filters.http.simple_cache:
+  categories:
+  - envoy.filters.http
+  security_posture: robust_to_untrusted_downstream_and_upstream
+  status: wip
+  type_urls:
+  - envoy.extensions.filters.http.simple_cache.v3.SimpleCache
 envoy.filters.http.tap:
   categories:
   - envoy.filters.http
